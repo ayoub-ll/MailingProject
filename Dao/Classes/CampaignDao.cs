@@ -14,6 +14,11 @@ namespace MailingProject.Dao.Classes
         /* DB Context */
         private MailingAppDbContext dbContext;
 
+        public CampaignDao()
+        {
+            this.dbContext = new MailingAppDbContext();
+        }
+
         /* Retourne une campagne depuis son ID */
         public Campaign getCampaignById(int id)
         {

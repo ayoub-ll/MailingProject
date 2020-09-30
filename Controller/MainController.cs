@@ -32,6 +32,7 @@ namespace MailingProject.Controller
                 instance = new MainController();
                 instance.campaignManagementView = new CampaignManagement();
                 instance.homeView = new Form1();
+                instance.dbService = new DbService();
             }
 
             return instance;
