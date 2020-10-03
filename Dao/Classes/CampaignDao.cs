@@ -3,6 +3,7 @@ using MailingProject.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,16 @@ namespace MailingProject.Dao.Classes
         public List<Campaign> getCampaigns()
         {
             return this.dbContext.Campaigns.ToList();
+        }
+
+        public bool setCampaigns(List<Campaign> campaignList)
+        {
+            foreach(Campaign campaign in campaignList)
+            {
+                this.dbContext.Campaigns.AddOrUpdate(campaign);
+            }
+            this.dbContext.SaveChanges();
+            return true;
         }
     }
 }

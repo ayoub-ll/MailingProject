@@ -49,9 +49,18 @@ namespace MailingProject.View
         public void UpdateListFromDb(List<Campaign> campaigns)
         {
             listView1.Clear();
+
             foreach(Campaign campaign in campaigns)
             {
-                listView1.Items.Add(campaign.name);
+                ListViewItem campaignViewTime = new ListViewItem();
+                ListViewItem.ListViewSubItem campaignIdSubItem = new ListViewItem.ListViewSubItem();
+
+                campaignViewTime.Text = campaign.name;
+                campaignIdSubItem.Name = "CampaignId";
+                campaignIdSubItem.Text = campaign.campaignId.ToString();
+
+                campaignViewTime.SubItems.Add(campaignIdSubItem);
+                listView1.Items.Add(campaignViewTime);
             }
         }
 
@@ -73,6 +82,7 @@ namespace MailingProject.View
         private void button2_Click(object sender, EventArgs e)
         {
             MainController.getInstance().UpdateDbFromCampaignList(this.listView1.Items);
+            MainController.getInstance().UpdateCampaignListFromDb();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MailingProject.Dao.Classes;
 using MailingProject.Dao.Interfaces;
+using MailingProject.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,11 @@ namespace MailingProject.Services
         public DbService()
         {
             this.campaignDao = new CampaignDao();
+        }
+
+        internal void updateCampaignsDb(List<Campaign> dbCampaigns)
+        {
+            this.campaignDao.setCampaigns(dbCampaigns);
         }
     }
 }

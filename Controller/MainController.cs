@@ -49,11 +49,11 @@ namespace MailingProject.Controller
         {
             this.campaignManagementView.Show();
             this.homeView.Hide();
-            updateCampaignListFromDb();
+            UpdateCampaignListFromDb();
         }
 
         /* MAJ de la liste de campagnes depuis la DB MySQL */
-        public void updateCampaignListFromDb()
+        public void UpdateCampaignListFromDb()
         {
             List<Campaign> dbCampaigns = new List<Campaign>();
             dbCampaigns = this.dbService.campaignDao.getCampaigns();
@@ -64,11 +64,20 @@ namespace MailingProject.Controller
         public void UpdateDbFromCampaignList(ListView.ListViewItemCollection items)
         {
             List<Campaign> dbCampaigns = new List<Campaign>();
-            foreach(ListView.ListViewItemCollection item in items)
+            foreach(System.Windows.Forms.ListViewItem item in items)
             {
-                dbCampaigns.Add(new Campaign("ok"));
+                Campaign campaign = new Campaign(item.Text);
+
+                //On détecte si c'est une campagne existant en checkant s'il a un ID en subItem
+                if (item.SubItems.Count > 1)
+                {
+                    //Récupération de l'id de l'item selectionné qu'on a préalablement installé en subItem
+                    campaign.campaignId = Convert.ToInt32(item.SubItems[1].Text);
+                }
+
+                dbCampaigns.Add(campaign);
             }
-                
+            this.dbService.updateCampaignsDb(dbCampaigns);
         }
     }
 }
