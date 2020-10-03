@@ -71,7 +71,8 @@ namespace MailingProject.Controller
                 //On détecte si c'est une campagne existant en checkant s'il a un ID en subItem
                 if (item.SubItems.Count > 1)
                 {
-                    //Récupération de l'id de l'item selectionné qu'on a préalablement installé en subItem
+                    //Récupération de l'id du nouvel item crée (puisqu'il n'a pas d'id ici)
+                    //qu'on a préalablement installé en subItem
                     campaign.campaignId = Convert.ToInt32(item.SubItems[1].Text);
                 }
 

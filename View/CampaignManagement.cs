@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +37,12 @@ namespace MailingProject.View
             if(textBox1.TextLength > 0)
             {
                 this.addCampaign(textBox1.Text);
-            }  
+            }
+
+            MainController.getInstance().UpdateDbFromCampaignList(this.listView1.Items);
+            MainController.getInstance().UpdateCampaignListFromDb();
+
+            System.Windows.Forms.MessageBox.Show("Nouvelle campagne ajoutée !");
         }
 
         private void addCampaign(string campaignName)
@@ -76,13 +82,44 @@ namespace MailingProject.View
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if(listView1.SelectedItems.Count > 0) // Si un élement est bien selectionné (et que c'est pas un click à blanc)
+                System.Windows.Forms.MessageBox.Show(listView1.SelectedItems[0].SubItems[1].Text);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             MainController.getInstance().UpdateDbFromCampaignList(this.listView1.Items);
             MainController.getInstance().UpdateCampaignListFromDb();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "CSV file (*.csv)|*.csv| Txt file (*.txt)|*.txt"; // file types, that will be allowed to upload
+            dialog.Multiselect = true; // allow/deny user to upload more than one file at a time
+            if (dialog.ShowDialog() == DialogResult.OK) // if user clicked OK
+            {
+                String path = dialog.FileName; // get name of file
+                using (StreamReader reader = new StreamReader(new FileStream(path, FileMode.Open), new UTF8Encoding())) // do anything you want, e.g. read it
+                {
+                    listView2.Items.Add(new ListViewItem(dialog.FileName));
+                }
+            }
+        }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
