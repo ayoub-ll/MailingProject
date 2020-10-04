@@ -38,11 +38,6 @@ namespace MailingProject.Controller
             return instance;
         }
 
-        internal void addCampaign(Campaign newCampaign)
-        {
-            this.dbService.campaignDao.addCampaign(newCampaign);
-        }
-
         /* Affichage de la home page */
         public void StartApp()
         {
@@ -62,6 +57,12 @@ namespace MailingProject.Controller
             List<Campaign> dbCampaigns = new List<Campaign>();
             dbCampaigns = this.dbService.campaignDao.getCampaigns();
             this.campaignManagementView.UpdateListFromDb(dbCampaigns);
+        }
+
+        /* Ajout d'une nouvelle campagne à la DB via le dbService */
+        public void addCampaign(Campaign newCampaign)
+        {
+            this.dbService.campaignDao.addCampaign(newCampaign);
         }
 
         /* MAJ de la DB de campagnes depuis les models */

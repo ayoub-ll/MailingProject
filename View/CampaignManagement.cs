@@ -44,8 +44,7 @@ namespace MailingProject.View
 
             Campaign newCampaign = new Campaign(textBox1.Text); //création de l'objet Campagne
             MainController.getInstance().addCampaign(newCampaign); //ajout de la campagne à la db
-
-            MainController.getInstance().UpdateCampaignListFromDb();
+            MainController.getInstance().UpdateCampaignListFromDb(); //Mise à jour de la liste sur la view depuis la db suite à l'ajout de la nouvelle campagne
 
 
             System.Windows.Forms.MessageBox.Show("Nouvelle campagne ajoutée !");

@@ -20,9 +20,11 @@ namespace MailingProject.Services
             this.campaignDao = new CampaignDao();
         }
 
+        /*
         internal void updateCampaignsDb(List<Campaign> dbCampaigns)
         {
             this.campaignDao.setCampaigns(dbCampaigns);
         }
+        */
     }
 }
