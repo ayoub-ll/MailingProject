@@ -15,11 +15,11 @@ namespace MailingProject
     {
         public MailingAppDbContext() : base("dbConnection")
         {
-
         }
 
         public DbSet<Campaign> Campaigns { get; set; }
-
+        public DbSet<Email> Emails { get; set; }
+        public DbSet<EmailsFile> EmailsFiles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

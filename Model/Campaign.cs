@@ -16,14 +16,13 @@ namespace MailingProject.Model
         [Column]
         [Required]
         public string name { get; set; }
-
-        public List<string> emailList { get; set; }
-
-        public List<string> emailFilesList { get; set; }
+        public ICollection<Email> emailList { get; set; }
+        public ICollection<EmailsFile> emailsFileList { get; set; }
 
         public Campaign(string name)
         {
             this.name = name;
+            this.emailList = new List<Email>();
         }
 
         public Campaign()

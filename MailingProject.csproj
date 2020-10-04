@@ -126,6 +126,18 @@
     <Compile Include="Migrations\202010032000560_campaign2.designer.cs">
       <DependentUpon>202010032000560_campaign2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010041422260_campaignUpdate.cs" />
+    <Compile Include="Migrations\202010041422260_campaignUpdate.designer.cs">
+      <DependentUpon>202010041422260_campaignUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010041425322_campaignUpdate1.cs" />
+    <Compile Include="Migrations\202010041425322_campaignUpdate1.designer.cs">
+      <DependentUpon>202010041425322_campaignUpdate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010041437233_campaignUpdate2.cs" />
+    <Compile Include="Migrations\202010041437233_campaignUpdate2.designer.cs">
+      <DependentUpon>202010041437233_campaignUpdate2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Dao\Classes\CampaignDao.cs" />
     <Compile Include="Model\Dao\Interfaces\ICampaignDao.cs" />
     <Compile Include="MailingAppDbContext.cs" />
@@ -143,6 +155,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Campaign.cs" />
+    <Compile Include="Model\Email.cs" />
+    <Compile Include="Model\EmailsFile.cs" />
     <Compile Include="Services\DbService.cs" />
     <Compile Include="Services\ModelsServices.cs" />
     <Compile Include="Util.cs" />
@@ -180,6 +194,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010032000560_campaign2.resx">
       <DependentUpon>202010032000560_campaign2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010041422260_campaignUpdate.resx">
+      <DependentUpon>202010041422260_campaignUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010041425322_campaignUpdate1.resx">
+      <DependentUpon>202010041425322_campaignUpdate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010041437233_campaignUpdate2.resx">
+      <DependentUpon>202010041437233_campaignUpdate2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\CampaignManagement.resx">
       <DependentUpon>CampaignManagement.cs</DependentUpon>

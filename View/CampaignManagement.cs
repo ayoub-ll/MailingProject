@@ -90,9 +90,37 @@ namespace MailingProject.View
             if (listView1.SelectedItems.Count > 0)// Si un élement est bien selectionné (et que c'est pas un click à blanc)
             {
                 groupBox2.Visible = true; //Affichage de la partie emails liés à la campagne selectionnée
+                this.showCampaignInformationsFromDb(); //Récupération et affichage de la liste des fichiers d'emails liés à cette campagne
             } else
             {
                 groupBox2.Visible = false;
+            }
+        }
+
+        /*
+         * Récupération et affichage des paths des fichiers d'emails associés à la campagne selectionnée
+         */
+        private void showCampaignInformationsFromDb()
+        {
+            // Récupération des paths des fichiers d'emails liés à la campagne selectionnée sur cette view
+            ICollection<EmailsFile> emailsFiles = MainController.getInstance().getCampaignEmailsFilesById(Convert.ToInt32(listView1.SelectedItems[0].SubItems[1].Text));
+
+            /*
+             * On parcours les fichiers d'emails récupérés
+             * Pour chacun, on l'affiche sur la listView2 (qui correspond à la liste des fichiers associés à la campagne selectionnée)
+             * Et pour garder l'id de cet EmailsFile, on l'insère en subitem au cas où on en a besoin
+             */
+            foreach(EmailsFile emailFile in emailsFiles)
+            {
+                ListViewItem emailFileListViewItem = new ListViewItem(emailFile.path);
+                ListViewItem.ListViewSubItem emailFileListViewSubItem = new ListViewItem.ListViewSubItem();
+
+                emailFileListViewSubItem.Name = "EmailsFileId";
+                emailFileListViewSubItem.Text = emailFile.emailsFileId.ToString();
+
+                emailFileListViewItem.SubItems.Add(emailFileListViewSubItem);
+
+                listView2.Items.Add(emailFileListViewItem);
             }
         }
 

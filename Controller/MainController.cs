@@ -65,6 +65,11 @@ namespace MailingProject.Controller
             this.dbService.campaignDao.addCampaign(newCampaign);
         }
 
+        public ICollection<EmailsFile> getCampaignEmailsFilesById(int campaignId)
+        {
+            return this.dbService.campaignDao.getCampaignEmailsFilesById(campaignId);
+        }
+
         /* MAJ de la DB de campagnes depuis les models */
         /*
         public void UpdateDbFromCampaignList(ListView.ListViewItemCollection items)

@@ -22,17 +22,10 @@ namespace MailingProject.Dao.Classes
 
         /* Ajout d'une nouvelle campaign en db */
         public bool addCampaign(Campaign newCampaign)
-        {
-            try
-            {
-                this.dbContext.Campaigns.AddOrUpdate(newCampaign);
-                this.dbContext.SaveChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+    {
+            this.dbContext.Campaigns.AddOrUpdate(newCampaign);
+            int ret = this.dbContext.SaveChanges();
+            return ret != 0 ? true : false;
         }
 
         /* Retourne une campagne depuis son ID */
@@ -41,6 +34,12 @@ namespace MailingProject.Dao.Classes
             return this.dbContext.Campaigns.Where(c => c.campaignId.Equals(id)).FirstOrDefault();
         }
 
+        public ICollection<EmailsFile> getCampaignEmailsFilesById(int id)
+        {
+            return this.dbContext.Campaigns.Where(c => c.campaignId.Equals(id)).Include("emailsFileList").FirstOrDefault().emailsFileList;
+        }
+
+        /* Retourne toutes les campagnes présentes en DB */
         public List<Campaign> getCampaigns()
         {
             return this.dbContext.Campaigns.ToList();
@@ -53,8 +52,8 @@ namespace MailingProject.Dao.Classes
             {
                 this.dbContext.Campaigns.AddOrUpdate(campaign);
             }
-            this.dbContext.SaveChanges();
-            return true;
+            int ret = this.dbContext.SaveChanges();
+            return ret != 0 ? true : false;
         }
         */
     }
