@@ -97,12 +97,6 @@ namespace MailingProject.View
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MainController.getInstance().UpdateDbFromCampaignList(this.listView1.Items);
-            MainController.getInstance().UpdateCampaignListFromDb();
-        }
-
         private void label2_Click(object sender, EventArgs e)
         {
 

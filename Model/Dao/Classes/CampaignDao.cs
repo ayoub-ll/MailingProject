@@ -46,6 +46,7 @@ namespace MailingProject.Dao.Classes
             return this.dbContext.Campaigns.ToList();
         }
 
+        /*
         public bool setCampaigns(List<Campaign> campaignList)
         {
             foreach(Campaign campaign in campaignList)
@@ -55,5 +56,6 @@ namespace MailingProject.Dao.Classes
             this.dbContext.SaveChanges();
             return true;
         }
+        */
     }
 }

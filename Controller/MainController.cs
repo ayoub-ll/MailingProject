@@ -65,6 +65,7 @@ namespace MailingProject.Controller
         }
 
         /* MAJ de la DB de campagnes depuis les models */
+        /*
         public void UpdateDbFromCampaignList(ListView.ListViewItemCollection items)
         {
             List<Campaign> dbCampaigns = new List<Campaign>();
@@ -84,5 +85,6 @@ namespace MailingProject.Controller
             }
             this.dbService.updateCampaignsDb(dbCampaigns);
         }
+        */
     }
 }
