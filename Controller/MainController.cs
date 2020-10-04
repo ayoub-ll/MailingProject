@@ -38,6 +38,11 @@ namespace MailingProject.Controller
             return instance;
         }
 
+        internal void addCampaign(Campaign newCampaign)
+        {
+            this.dbService.campaignDao.addCampaign(newCampaign);
+        }
+
         /* Affichage de la home page */
         public void StartApp()
         {
@@ -49,7 +54,6 @@ namespace MailingProject.Controller
         {
             this.campaignManagementView.Show();
             this.homeView.Hide();
-            UpdateCampaignListFromDb();
         }
 
         /* MAJ de la liste de campagnes depuis la DB MySQL */

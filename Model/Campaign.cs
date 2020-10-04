@@ -17,6 +17,10 @@ namespace MailingProject.Model
         [Required]
         public string name { get; set; }
 
+        public List<string> emailList { get; set; }
+
+        public List<string> emailFilesList { get; set; }
+
         public Campaign(string name)
         {
             this.name = name;

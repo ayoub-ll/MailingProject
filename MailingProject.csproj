@@ -110,8 +110,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\MainController.cs" />
-    <Compile Include="Dao\Classes\CampaignDao.cs" />
-    <Compile Include="Dao\Interfaces\ICampaignDao.cs" />
+    <Compile Include="Migrations\202010031915084_Campaign new field.cs" />
+    <Compile Include="Migrations\202010031915084_Campaign new field.designer.cs">
+      <DependentUpon>202010031915084_Campaign new field.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010031947120_campaign.cs" />
+    <Compile Include="Migrations\202010031947120_campaign.designer.cs">
+      <DependentUpon>202010031947120_campaign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010031955029_campaign1.cs" />
+    <Compile Include="Migrations\202010031955029_campaign1.designer.cs">
+      <DependentUpon>202010031955029_campaign1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010032000560_campaign2.cs" />
+    <Compile Include="Migrations\202010032000560_campaign2.designer.cs">
+      <DependentUpon>202010032000560_campaign2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Dao\Classes\CampaignDao.cs" />
+    <Compile Include="Model\Dao\Interfaces\ICampaignDao.cs" />
     <Compile Include="MailingAppDbContext.cs" />
     <Compile Include="Migrations\202009301239260_migration1.cs" />
     <Compile Include="Migrations\202009301239260_migration1.designer.cs">
@@ -152,6 +168,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009301245367_update Campaig.resx">
       <DependentUpon>202009301245367_update Campaig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010031915084_Campaign new field.resx">
+      <DependentUpon>202010031915084_Campaign new field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010031947120_campaign.resx">
+      <DependentUpon>202010031947120_campaign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010031955029_campaign1.resx">
+      <DependentUpon>202010031955029_campaign1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010032000560_campaign2.resx">
+      <DependentUpon>202010032000560_campaign2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\CampaignManagement.resx">
       <DependentUpon>CampaignManagement.cs</DependentUpon>

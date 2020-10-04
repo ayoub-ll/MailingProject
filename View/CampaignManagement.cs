@@ -32,15 +32,21 @@ namespace MailingProject.View
 
         }
 
+        /* Au click du bouton "ajouter" pour les campagnes, on crée la campagne sur la view, en db puis on notifie l'user */
         private void button1_Click(object sender, EventArgs e)
         {
+            /*
             if(textBox1.TextLength > 0)
             {
                 this.addCampaign(textBox1.Text);
             }
+            */
 
-            MainController.getInstance().UpdateDbFromCampaignList(this.listView1.Items);
+            Campaign newCampaign = new Campaign(textBox1.Text); //création de l'objet Campagne
+            MainController.getInstance().addCampaign(newCampaign); //ajout de la campagne à la db
+
             MainController.getInstance().UpdateCampaignListFromDb();
+
 
             System.Windows.Forms.MessageBox.Show("Nouvelle campagne ajoutée !");
         }
@@ -82,8 +88,13 @@ namespace MailingProject.View
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listView1.SelectedItems.Count > 0) // Si un élement est bien selectionné (et que c'est pas un click à blanc)
-                System.Windows.Forms.MessageBox.Show(listView1.SelectedItems[0].SubItems[1].Text);
+            if (listView1.SelectedItems.Count > 0)// Si un élement est bien selectionné (et que c'est pas un click à blanc)
+            {
+                groupBox2.Visible = true; //Affichage de la partie emails liés à la campagne selectionnée
+            } else
+            {
+                groupBox2.Visible = false;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -113,11 +124,17 @@ namespace MailingProject.View
                 using (StreamReader reader = new StreamReader(new FileStream(path, FileMode.Open), new UTF8Encoding())) // do anything you want, e.g. read it
                 {
                     listView2.Items.Add(new ListViewItem(dialog.FileName));
+                    //File.Copy(path, "Model/EmailListFiles");
                 }
             }
         }
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
         {
 
         }

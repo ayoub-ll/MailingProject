@@ -12,5 +12,6 @@ namespace MailingProject.Dao.Interfaces
         Campaign getCampaignById(int id);
         List<Campaign> getCampaigns();
         bool setCampaigns(List<Campaign> campaignList);
+        bool addCampaign(Campaign newCampaign);
     }
 }

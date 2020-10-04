@@ -20,6 +20,21 @@ namespace MailingProject.Dao.Classes
             this.dbContext = new MailingAppDbContext();
         }
 
+        /* Ajout d'une nouvelle campaign en db */
+        public bool addCampaign(Campaign newCampaign)
+        {
+            try
+            {
+                this.dbContext.Campaigns.AddOrUpdate(newCampaign);
+                this.dbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         /* Retourne une campagne depuis son ID */
         public Campaign getCampaignById(int id)
         {

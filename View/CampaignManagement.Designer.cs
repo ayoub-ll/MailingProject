@@ -39,15 +39,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.listView3 = new System.Windows.Forms.ListView();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.listView2 = new System.Windows.Forms.ListView();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -166,53 +166,8 @@
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Email";
-            // 
-            // listView2
-            // 
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(22, 53);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(125, 196);
-            this.listView2.TabIndex = 0;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(44, 37);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Fichiers d\'emails";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(22, 255);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Ajouter fichier";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // listView3
-            // 
-            this.listView3.HideSelection = false;
-            this.listView3.Location = new System.Drawing.Point(235, 53);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(190, 196);
-            this.listView3.TabIndex = 8;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(298, 37);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Liste d\'emails";
+            this.groupBox2.Visible = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // groupBox3
             // 
@@ -252,6 +207,53 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Ajouter";
             this.button3.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(298, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Liste d\'emails";
+            // 
+            // listView3
+            // 
+            this.listView3.HideSelection = false;
+            this.listView3.Location = new System.Drawing.Point(235, 53);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(190, 196);
+            this.listView3.TabIndex = 8;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(22, 255);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(125, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Ajouter fichier";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(44, 37);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Fichiers d\'emails";
+            // 
+            // listView2
+            // 
+            this.listView2.HideSelection = false;
+            this.listView2.Location = new System.Drawing.Point(22, 53);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(125, 196);
+            this.listView2.TabIndex = 0;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
             // 
             // CampaignManagement
             // 
