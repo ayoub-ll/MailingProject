@@ -41,6 +41,7 @@ namespace MailingProject.View
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -157,6 +158,7 @@ namespace MailingProject.View
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.listView3);
@@ -165,12 +167,25 @@ namespace MailingProject.View
             this.groupBox2.Controls.Add(this.listView2);
             this.groupBox2.Location = new System.Drawing.Point(309, 52);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(445, 374);
+            this.groupBox2.Size = new System.Drawing.Size(445, 424);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Email";
             this.groupBox2.Visible = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.DarkRed;
+            this.button4.ForeColor = System.Drawing.SystemColors.Info;
+            this.button4.Location = new System.Drawing.Point(235, 255);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(190, 23);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "Supprimer e-mail";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Visible = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // groupBox3
             // 
@@ -178,7 +193,7 @@ namespace MailingProject.View
             this.groupBox3.Controls.Add(this.textBox2);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Location = new System.Drawing.Point(235, 251);
+            this.groupBox3.Location = new System.Drawing.Point(235, 298);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(190, 123);
             this.groupBox3.TabIndex = 8;
@@ -224,13 +239,17 @@ namespace MailingProject.View
             // 
             // listView3
             // 
+            this.listView3.FullRowSelect = true;
             this.listView3.HideSelection = false;
+            this.listView3.LabelEdit = true;
             this.listView3.Location = new System.Drawing.Point(235, 53);
+            this.listView3.MultiSelect = false;
             this.listView3.Name = "listView3";
             this.listView3.Size = new System.Drawing.Size(190, 196);
             this.listView3.TabIndex = 8;
             this.listView3.UseCompatibleStateImageBehavior = false;
             this.listView3.View = System.Windows.Forms.View.List;
+            this.listView3.SelectedIndexChanged += new System.EventHandler(this.listView3_SelectedIndexChanged);
             // 
             // button2
             // 
@@ -268,7 +287,7 @@ namespace MailingProject.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 530);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
@@ -316,5 +335,6 @@ namespace MailingProject.View
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.Button button4;
     }
 }

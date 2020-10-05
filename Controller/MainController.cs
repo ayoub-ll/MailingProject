@@ -56,37 +56,42 @@ namespace MailingProject.Controller
         public void UpdateCampaignListFromDb()
         {
             List<Campaign> dbCampaigns = new List<Campaign>();
-            dbCampaigns = this.campaignDao.getCampaigns();
+            dbCampaigns = this.campaignDao.GetCampaigns();
             this.campaignManagementView.UpdateCampaignListFromDb(dbCampaigns);
         }
 
         /* Ajout d'une nouvelle campagne à la DB via le dbService */
         public void addCampaign(Campaign newCampaign)
         {
-            this.campaignDao.addCampaign(newCampaign);
+            this.campaignDao.AddCampaign(newCampaign);
         }
 
         /* Retourne une collection de EmailsFile depuis le campaignId passé en param */
         public ICollection<EmailsFile> getCampaignEmailsFilesById(int campaignId)
         {
-            return this.campaignDao.getCampaignEmailsFilesById(campaignId);
+            return this.campaignDao.GetCampaignEmailsFilesById(campaignId);
         }
 
         /* Ajoute un nouveau EmailsFile à la campagne dont le campaignId est passé en param */
         public void AddEmailsFileByCampaignId(int campaignSelectedId, EmailsFile newEmailsFile)
         {
-            this.campaignDao.addCampaignEmailsFile(campaignSelectedId, newEmailsFile);
+            this.campaignDao.AddCampaignEmailsFile(campaignSelectedId, newEmailsFile);
         }
 
         /* Ajoute un nouveau Email à la campagne dont le campaignId est passé en param */
         public void addEmailByCampaignId(int campaignSelectedId, Email newEmail)
         {
-            this.campaignDao.addCampaignEmail(campaignSelectedId, newEmail);
+            this.campaignDao.AddCampaignEmail(campaignSelectedId, newEmail);
         }
 
         public ICollection<Email> getCampaignEmailsById(int campaignId)
         {
-            return this.campaignDao.getCampaignEmailsById(campaignId);
+            return this.campaignDao.GetCampaignEmailsById(campaignId);
+        }
+
+        public void removeEmailById(int emailId)
+        {
+            this.campaignDao.RemoveEmailById(emailId);
         }
     }
 }

@@ -228,5 +228,35 @@ namespace MailingProject.View
                 listView3.Items.Add(campaignViewTime);
             }
         }
+
+        /* Au click d'un e-mail, affichage du bouton supprimer */
+        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.listView3.SelectedItems.Count == 1)
+            {
+                this.button4.Visible = true;
+            } else
+            {
+                this.button4.Visible = false;
+            }
+        }
+
+        private void listView3_DoubleClick(object sender, System.EventArgs e)
+        {
+            if (this.listView3.SelectedItems.Count == 1)
+            {
+                this.listView3.SelectedItems[0].BeginEdit();
+            }
+        }
+
+        /* Au click du bouton rouge "supprimer un email", on le retire de la DB puis mise à jour de la view depuis la db */
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (this.listView3.SelectedItems.Count == 1)
+            {
+                MainController.getInstance().removeEmailById(Convert.ToInt32(listView3.SelectedItems[0].SubItems[1].Text));
+                this.UpdateEmailsListFromDb();
+            }
+        }
     }
 }
