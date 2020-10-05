@@ -282,5 +282,27 @@ namespace MailingProject.View
                 this.UpdateEmailsListFromDb();
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /* Au click du bouton "supprimer doublons", on detècte les doublons et on les supprime s'il y en a en passant par le MainController */
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            listView3.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            for (int i = 0; i < listView3.Items.Count - 1; i++)
+            {
+                if (listView3.Items[i].Text.Equals(listView3.Items[i + 1].Text))
+                {
+                    int emailId = Convert.ToInt32(listView3.Items[i + 1].SubItems[1].Text); //Stockage de l'id du mail à retirer
+                    MainController.getInstance().removeEmailById(emailId); //retrait du mail en DB
+                    this.UpdateEmailsListFromDb(); //mise à jour de la liste des emails en view suite à la suppression
+
+                    i--;
+                }
+            }
+        }
     }
 }

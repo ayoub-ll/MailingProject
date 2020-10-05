@@ -51,6 +51,8 @@ namespace MailingProject.View
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.listView2 = new System.Windows.Forms.ListView();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -158,6 +160,8 @@ namespace MailingProject.View
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button6);
+            this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.label5);
@@ -167,7 +171,7 @@ namespace MailingProject.View
             this.groupBox2.Controls.Add(this.listView2);
             this.groupBox2.Location = new System.Drawing.Point(309, 52);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(445, 424);
+            this.groupBox2.Size = new System.Drawing.Size(445, 466);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Email";
@@ -193,7 +197,7 @@ namespace MailingProject.View
             this.groupBox3.Controls.Add(this.textBox2);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Location = new System.Drawing.Point(235, 298);
+            this.groupBox3.Location = new System.Drawing.Point(235, 337);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(190, 123);
             this.groupBox3.TabIndex = 8;
@@ -283,6 +287,25 @@ namespace MailingProject.View
             this.listView2.View = System.Windows.Forms.View.List;
             this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(235, 284);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(190, 21);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "Supprimer doublons";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(235, 311);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(190, 21);
+            this.button6.TabIndex = 11;
+            this.button6.Text = "Exporter la liste en .txt";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
             // CampaignManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -336,5 +359,7 @@ namespace MailingProject.View
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
     }
 }
