@@ -45,6 +45,16 @@ namespace MailingProject.Dao.Classes
             return this.dbContext.Campaigns.ToList();
         }
 
+        /* Ajoute un EmailsFile en DB à la campagne dont l'id est donné en param*/
+        public bool addCampaignEmailsFile(int campaignId, EmailsFile newEmailsFile)
+        {
+            Campaign campaign = this.getCampaignById(campaignId);
+            campaign.emailsFileList.Add(newEmailsFile);
+
+            int ret = this.dbContext.SaveChanges();
+            return ret != 0 ? true : false;
+        }
+
         /*
         public bool setCampaigns(List<Campaign> campaignList)
         {

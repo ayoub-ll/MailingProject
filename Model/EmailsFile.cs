@@ -12,5 +12,15 @@ namespace MailingProject.Model
         [Key]
         public int emailsFileId { get; set; }
         public string path { get; set; }
+
+        public EmailsFile()
+        {
+
+        }
+
+        public EmailsFile(string path)
+        {
+            this.path = path;
+        }
     }
 }

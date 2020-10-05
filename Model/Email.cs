@@ -12,5 +12,10 @@ namespace MailingProject.Model
         [Key]
         public int emailId { get; set; }
         public string email { get; set; }
+
+        public Email()
+        {
+
+        }
     }
 }

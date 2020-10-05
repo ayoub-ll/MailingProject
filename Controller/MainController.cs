@@ -56,7 +56,7 @@ namespace MailingProject.Controller
         {
             List<Campaign> dbCampaigns = new List<Campaign>();
             dbCampaigns = this.dbService.campaignDao.getCampaigns();
-            this.campaignManagementView.UpdateListFromDb(dbCampaigns);
+            this.campaignManagementView.UpdateCampaignListFromDb(dbCampaigns);
         }
 
         /* Ajout d'une nouvelle campagne à la DB via le dbService */
@@ -68,6 +68,11 @@ namespace MailingProject.Controller
         public ICollection<EmailsFile> getCampaignEmailsFilesById(int campaignId)
         {
             return this.dbService.campaignDao.getCampaignEmailsFilesById(campaignId);
+        }
+
+        public void AddEmailsFileByCampaignId(int campaignSelectedId, EmailsFile newEmailsFile)
+        {
+            this.dbService.campaignDao.addCampaignEmailsFile(campaignSelectedId, newEmailsFile);
         }
 
         /* MAJ de la DB de campagnes depuis les models */
