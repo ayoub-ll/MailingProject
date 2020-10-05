@@ -19,7 +19,6 @@ namespace MailingProject.View
         {
             InitializeComponent();
             this.Text = "Mailing APP - Campaign Management";
-            //this.listView1.Items.
         }
 
         private void CampaignManagement_Load(object sender, EventArgs e)
@@ -32,27 +31,19 @@ namespace MailingProject.View
 
         }
 
-        /* Au click du bouton "ajouter" pour les campagnes, on crée la campagne sur la view, en db puis on notifie l'user */
+        /* Au click du bouton "ajouter" pour les campagnes, on crée la campagne sur la view, en db puis on notifie notre cher utilisateur sur la view via un MessageBox*/
         private void button1_Click(object sender, EventArgs e)
         {
-            /*
-            if(textBox1.TextLength > 0)
-            {
-                this.addCampaign(textBox1.Text);
-            }
-            */
-
-            Campaign newCampaign = new Campaign(textBox1.Text); //création de l'objet Campagne
-            MainController.getInstance().addCampaign(newCampaign); //ajout de la campagne à la db
+            Campaign newCampaign = new Campaign(textBox1.Text); //Création de l'objet Campagne
+            MainController.getInstance().addCampaign(newCampaign); //Ajout de la campagne à la db
             MainController.getInstance().UpdateCampaignListFromDb(); //Mise à jour de la liste sur la view depuis la db suite à l'ajout de la nouvelle campagne
-
 
             System.Windows.Forms.MessageBox.Show("Nouvelle campagne ajoutée !");
         }
 
+        /* Ajout d'une campagne sur la VIEW depuis le nom passé en param */
         private void addCampaign(string campaignName)
         {
-            //MainController.getInstance().AddCampaign(new Campaign(textBox1.Text));
             listView1.Items.Add(new ListViewItem(campaignName));
             textBox1.Clear();
         }
@@ -60,7 +51,6 @@ namespace MailingProject.View
         /**
          * Mise à jour de la liste des campagnes en view depuis celles passés en param
          */
-
         public void UpdateCampaignListFromDb(List<Campaign> campaigns)
         {
             listView1.Clear();
@@ -113,7 +103,7 @@ namespace MailingProject.View
         /* Au click d'une campagne, on met à jour la partie mail listing */
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count > 0)// Si un élement est bien selectionné (et que c'est pas un click à blanc)
+            if (listView1.SelectedItems.Count > 0)//Si un élement est bien selectionné (et que c'est pas un click à blanc)
             {
                 groupBox2.Visible = true; //Affichage de la partie emails liés à la campagne selectionnée
 
@@ -133,7 +123,7 @@ namespace MailingProject.View
          */
         private void showCampaignInformationsFromDb()
         {
-            // Récupération des paths des fichiers d'emails liés à la campagne selectionnée sur cette view
+            //Récupération des paths des fichiers d'emails liés à la campagne selectionnée sur cette view
             ICollection<EmailsFile> emailsFiles = MainController.getInstance().getCampaignEmailsFilesById(Convert.ToInt32(listView1.SelectedItems[0].SubItems[1].Text));
 
             /*
@@ -179,14 +169,14 @@ namespace MailingProject.View
             if (dialog.ShowDialog() == DialogResult.OK) // if user clicked OK
             {
                 String path = dialog.FileName; // get name of file
-                using (StreamReader reader = new StreamReader(new FileStream(path, FileMode.Open), new UTF8Encoding())) // do anything you want, e.g. read it
+                using (StreamReader reader = new StreamReader(new FileStream(path, FileMode.Open), new UTF8Encoding()))
                 {
-                    EmailsFile newEmailsFile = new EmailsFile(path);
+                    EmailsFile newEmailsFile = new EmailsFile(dialog.SafeFileName);
 
                     MainController.getInstance().AddEmailsFileByCampaignId(campaignSelectedId, newEmailsFile); //Ajout du nouveau EmailsFile associé à la campagne selectionnée
                     this.UpdateEmailsFileListFromDb(MainController.getInstance().getCampaignEmailsFilesById(campaignSelectedId)); //Mise à jour de la liste de fichiers d'emails
-                    //listView2.Items.Add(new ListViewItem(dialog.FileName));
-                    //File.Copy(path, "Model/EmailListFiles");
+
+                    //File.Copy((@path), "Storage/EmailsFiles/"+dialog.SafeFileName); //Création d'une copie du fichier selectionné, à l'intérieur du projet
                 }
             }
         }

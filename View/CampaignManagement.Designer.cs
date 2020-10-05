@@ -64,6 +64,7 @@
             this.listView1.Size = new System.Drawing.Size(174, 222);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // textBox1
@@ -230,7 +231,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(22, 255);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 23);
+            this.button2.Size = new System.Drawing.Size(207, 23);
             this.button2.TabIndex = 7;
             this.button2.Text = "Ajouter fichier";
             this.button2.UseVisualStyleBackColor = true;
@@ -239,7 +240,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(44, 37);
+            this.label4.Location = new System.Drawing.Point(86, 37);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 13);
             this.label4.TabIndex = 7;
@@ -247,12 +248,15 @@
             // 
             // listView2
             // 
+            this.listView2.GridLines = true;
             this.listView2.HideSelection = false;
             this.listView2.Location = new System.Drawing.Point(22, 53);
+            this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(125, 196);
+            this.listView2.Size = new System.Drawing.Size(207, 196);
             this.listView2.TabIndex = 0;
             this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.List;
             this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
             // 
             // CampaignManagement
