@@ -93,5 +93,15 @@ namespace MailingProject.Controller
         {
             this.campaignDao.RemoveEmailById(emailId);
         }
+
+        public Email getEmailById(int emailId)
+        {
+            return this.campaignDao.getEmailById(emailId);
+        }
+
+        public void updateEmail(Email email)
+        {
+            this.campaignDao.updateEmail(email);
+        }
     }
 }

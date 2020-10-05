@@ -80,5 +80,18 @@ namespace MailingProject.Dao.Classes
             int ret = this.dbContext.SaveChanges();
             return ret != 0 ? true : false;
         }
+
+        public Email getEmailById(int emailId)
+        {
+            return this.dbContext.Emails.Where(e => e.emailId.Equals(emailId)).FirstOrDefault();
+        }
+
+        public bool updateEmail(Email email)
+        {
+            this.dbContext.Emails.AddOrUpdate(email);
+
+            int ret = this.dbContext.SaveChanges();
+            return ret != 0 ? true : false;
+        }
     }
 }

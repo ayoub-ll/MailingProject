@@ -19,6 +19,7 @@ namespace MailingProject.View
         {
             InitializeComponent();
             this.Text = "Mailing APP - Campaign Management";
+            listView3.AfterLabelEdit += listView3_AfterLabelEdit;
         }
 
         private void CampaignManagement_Load(object sender, EventArgs e)
@@ -248,6 +249,28 @@ namespace MailingProject.View
                 this.listView3.SelectedItems[0].BeginEdit();
             }
         }
+
+        /*
+         * A la modification d'un email dans la liste
+         * On le met à jour en DB
+         */
+        private void listView3_AfterLabelEdit(object sender, LabelEditEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(e.Label))
+            {
+                e.CancelEdit = true;
+                MessageBox.Show("Please enter a valid value.");
+                return;
+            }
+
+            Email email = MainController.getInstance().getEmailById(Convert.ToInt32(this.listView3.Items[e.Item].SubItems[1].Text));
+            email.email = e.Label;
+
+            MainController.getInstance().updateEmail(email);
+
+            MessageBox.Show("Modification réalisée: " + e.Label.ToString());
+        }
+
 
         /* Au click du bouton rouge "supprimer un email", on le retire de la DB puis mise à jour de la view depuis la db */
         private void button4_Click(object sender, EventArgs e)
