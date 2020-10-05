@@ -41,6 +41,8 @@ namespace MailingProject.View
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -51,8 +53,6 @@ namespace MailingProject.View
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.listView2 = new System.Windows.Forms.ListView();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -178,6 +178,26 @@ namespace MailingProject.View
             this.groupBox2.Visible = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(235, 311);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(190, 21);
+            this.button6.TabIndex = 11;
+            this.button6.Text = "Exporter la liste en .txt";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(235, 284);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(190, 21);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "Supprimer doublons";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.DarkRed;
@@ -286,25 +306,6 @@ namespace MailingProject.View
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.List;
             this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(235, 284);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(190, 21);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Supprimer doublons";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click_1);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(235, 311);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(190, 21);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "Exporter la liste en .txt";
-            this.button6.UseVisualStyleBackColor = true;
             // 
             // CampaignManagement
             // 

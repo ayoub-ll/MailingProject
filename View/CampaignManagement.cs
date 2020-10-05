@@ -304,5 +304,24 @@ namespace MailingProject.View
                 }
             }
         }
+
+        /**
+         * Au click sur le bouton "exporter emails"
+         */
+        private void button6_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(saveFileDialog1.FileName);
+                foreach (ListViewItem item in listView3.Items)
+                {
+                    streamWriter.WriteLine(item.Text);
+                }
+                streamWriter.Close();
+            }
+        }
     }
 }
