@@ -77,5 +77,16 @@ namespace MailingProject.Controller
         {
             this.campaignDao.addCampaignEmailsFile(campaignSelectedId, newEmailsFile);
         }
+
+        /* Ajoute un nouveau Email à la campagne dont le campaignId est passé en param */
+        public void addEmailByCampaignId(int campaignSelectedId, Email newEmail)
+        {
+            this.campaignDao.addCampaignEmail(campaignSelectedId, newEmail);
+        }
+
+        public ICollection<Email> getCampaignEmailsById(int campaignId)
+        {
+            return this.campaignDao.getCampaignEmailsById(campaignId);
+        }
     }
 }

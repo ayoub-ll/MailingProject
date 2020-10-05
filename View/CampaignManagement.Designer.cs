@@ -1,4 +1,6 @@
-﻿namespace MailingProject.View
+﻿using System;
+
+namespace MailingProject.View
 {
     partial class CampaignManagement
     {
@@ -189,6 +191,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(174, 20);
             this.textBox2.TabIndex = 1;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label7
             // 
@@ -208,6 +211,7 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Ajouter";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label5
             // 
@@ -226,6 +230,7 @@
             this.listView3.Size = new System.Drawing.Size(190, 196);
             this.listView3.TabIndex = 8;
             this.listView3.UseCompatibleStateImageBehavior = false;
+            this.listView3.View = System.Windows.Forms.View.List;
             // 
             // button2
             // 
@@ -283,6 +288,10 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
         }
 
         #endregion

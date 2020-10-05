@@ -72,11 +72,11 @@ namespace MailingProject.View
         /**
          * Mise à jour de la liste des fichires d'emails en view depuis celles passés en param
          */
-        private void UpdateEmailsFileListFromDb(ICollection<EmailsFile> eEmailsFiles)
+        private void UpdateEmailsFileListFromDb(ICollection<EmailsFile> emailsFiles)
         {
             listView2.Clear();
 
-            foreach (EmailsFile emailsFile in eEmailsFiles)
+            foreach (EmailsFile emailsFile in emailsFiles)
             {
                 ListViewItem campaignViewTime = new ListViewItem();
                 ListViewItem.ListViewSubItem campaignIdSubItem = new ListViewItem.ListViewSubItem();
@@ -111,7 +111,8 @@ namespace MailingProject.View
                 this.listView2.Clear();
                 this.listView3.Clear();
 
-                this.showCampaignInformationsFromDb(); //Récupération et affichage de la liste des fichiers d'emails liés à cette campagne
+                this.ShowCampaignInformationsFromDb(); //Récupération et affichage de la liste des fichiers d'emails liés à cette campagne
+                this.UpdateEmailsListFromDb(); //Récupération et affichage de la liste d'emails liés à la campagne selectionnée
             } else
             {
                 groupBox2.Visible = false;
@@ -121,7 +122,7 @@ namespace MailingProject.View
         /*
          * Récupération et affichage des paths des fichiers d'emails associés à la campagne selectionnée
          */
-        private void showCampaignInformationsFromDb()
+        private void ShowCampaignInformationsFromDb()
         {
             //Récupération des paths des fichiers d'emails liés à la campagne selectionnée sur cette view
             ICollection<EmailsFile> emailsFiles = MainController.getInstance().getCampaignEmailsFilesById(Convert.ToInt32(listView1.SelectedItems[0].SubItems[1].Text));
@@ -189,6 +190,43 @@ namespace MailingProject.View
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        /**
+         * Au click du boutton "Ajouter email", on ajout de l'email en db (via controller and dao)
+         */
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int campaignSelectedId = Convert.ToInt32(listView1.SelectedItems[0].SubItems[1].Text); //campaignId de la campagne selectionnée
+
+            //Ajout de l'email en db (via controller and dao)
+            MainController.getInstance().addEmailByCampaignId(campaignSelectedId, new Email(this.textBox2.Text));
+            this.UpdateEmailsListFromDb(); //Mise à jour de la liste de fichiers d'emails
+
+            this.textBox2.Clear(); //Nettoyage de la textbox contenant le mail saisi
+        }
+
+        /**
+         * Mise à jour de la liste d'emails en view depuis celles passés en param
+         */
+        private void UpdateEmailsListFromDb()
+        {
+            listView3.Clear();
+
+            int campaignSelectedId = Convert.ToInt32(listView1.SelectedItems[0].SubItems[1].Text); //campaignId de la campagne selectionnée
+
+            foreach (Email email in MainController.getInstance().getCampaignEmailsById(campaignSelectedId))
+            {
+                ListViewItem campaignViewTime = new ListViewItem();
+                ListViewItem.ListViewSubItem campaignIdSubItem = new ListViewItem.ListViewSubItem();
+
+                campaignViewTime.Text = email.email;
+                campaignIdSubItem.Name = "emailId";
+                campaignIdSubItem.Text = email.emailId.ToString();
+
+                campaignViewTime.SubItems.Add(campaignIdSubItem);
+                listView3.Items.Add(campaignViewTime);
+            }
         }
     }
 }

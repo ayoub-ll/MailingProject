@@ -14,5 +14,7 @@ namespace MailingProject.Dao.Interfaces
         bool addCampaign(Campaign newCampaign);
         ICollection<EmailsFile> getCampaignEmailsFilesById(int id);
         bool addCampaignEmailsFile(int campaignId, EmailsFile newEmailsFile);
+        bool addCampaignEmail(int campaignSelectedId, Email newEmail);
+        ICollection<Email> getCampaignEmailsById(int campaignId);
     }
 }
