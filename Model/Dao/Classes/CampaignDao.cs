@@ -34,6 +34,7 @@ namespace MailingProject.Dao.Classes
             return this.dbContext.Campaigns.Where(c => c.campaignId.Equals(id)).FirstOrDefault();
         }
 
+        /* Retourne les EmailsFile depuis le campaignId */
         public ICollection<EmailsFile> getCampaignEmailsFilesById(int id)
         {
             return this.dbContext.Campaigns.Where(c => c.campaignId.Equals(id)).Include("emailsFileList").FirstOrDefault().emailsFileList;
@@ -54,17 +55,5 @@ namespace MailingProject.Dao.Classes
             int ret = this.dbContext.SaveChanges();
             return ret != 0 ? true : false;
         }
-
-        /*
-        public bool setCampaigns(List<Campaign> campaignList)
-        {
-            foreach(Campaign campaign in campaignList)
-            {
-                this.dbContext.Campaigns.AddOrUpdate(campaign);
-            }
-            int ret = this.dbContext.SaveChanges();
-            return ret != 0 ? true : false;
-        }
-        */
     }
 }

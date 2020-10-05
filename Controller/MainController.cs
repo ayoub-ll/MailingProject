@@ -1,5 +1,6 @@
-﻿using MailingProject.Model;
-using MailingProject.Services;
+﻿using MailingProject.Dao.Classes;
+using MailingProject.Dao.Interfaces;
+using MailingProject.Model;
 using MailingProject.View;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,8 @@ namespace MailingProject.Controller
     {
         public static MainController instance;
 
-        /* DB Service */
-        public DbService dbService;
+        /* DAO */
+        public ICampaignDao campaignDao;
 
         /* Views */
         private Form1 homeView;
@@ -32,7 +33,7 @@ namespace MailingProject.Controller
                 instance = new MainController();
                 instance.campaignManagementView = new CampaignManagement();
                 instance.homeView = new Form1();
-                instance.dbService = new DbService();
+                instance.campaignDao = new CampaignDao();
             }
 
             return instance;
@@ -55,24 +56,24 @@ namespace MailingProject.Controller
         public void UpdateCampaignListFromDb()
         {
             List<Campaign> dbCampaigns = new List<Campaign>();
-            dbCampaigns = this.dbService.campaignDao.getCampaigns();
+            dbCampaigns = this.campaignDao.getCampaigns();
             this.campaignManagementView.UpdateCampaignListFromDb(dbCampaigns);
         }
 
         /* Ajout d'une nouvelle campagne à la DB via le dbService */
         public void addCampaign(Campaign newCampaign)
         {
-            this.dbService.campaignDao.addCampaign(newCampaign);
+            this.campaignDao.addCampaign(newCampaign);
         }
 
         public ICollection<EmailsFile> getCampaignEmailsFilesById(int campaignId)
         {
-            return this.dbService.campaignDao.getCampaignEmailsFilesById(campaignId);
+            return this.campaignDao.getCampaignEmailsFilesById(campaignId);
         }
 
         public void AddEmailsFileByCampaignId(int campaignSelectedId, EmailsFile newEmailsFile)
         {
-            this.dbService.campaignDao.addCampaignEmailsFile(campaignSelectedId, newEmailsFile);
+            this.campaignDao.addCampaignEmailsFile(campaignSelectedId, newEmailsFile);
         }
 
         /* MAJ de la DB de campagnes depuis les models */
