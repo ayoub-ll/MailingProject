@@ -23,6 +23,7 @@ namespace MailingProject.Controller
         /* Views */
         private Form1 homeView;
         private CampaignManagement campaignManagementView;
+        private EmailSendingView emailSendingView;
         
 
         /* Retourne l'instance de ce singleton MainController */

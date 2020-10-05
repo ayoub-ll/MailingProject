@@ -53,6 +53,8 @@ namespace MailingProject.View
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.listView2 = new System.Windows.Forms.ListView();
+            this.button7 = new System.Windows.Forms.Button();
+            this.customInstaller1 = new MySql.Data.MySqlClient.CustomInstaller();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -110,6 +112,7 @@ namespace MailingProject.View
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Visible = false;
             // 
             // campagnesToolStripMenuItem
             // 
@@ -307,11 +310,22 @@ namespace MailingProject.View
             this.listView2.View = System.Windows.Forms.View.List;
             this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
             // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.Green;
+            this.button7.Location = new System.Drawing.Point(569, 529);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(219, 40);
+            this.button7.TabIndex = 9;
+            this.button7.Text = "Envoyer e-mail";
+            this.button7.UseVisualStyleBackColor = false;
+            // 
             // CampaignManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 530);
+            this.ClientSize = new System.Drawing.Size(800, 581);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
@@ -362,5 +376,7 @@ namespace MailingProject.View
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button7;
+        private MySql.Data.MySqlClient.CustomInstaller customInstaller1;
     }
 }
