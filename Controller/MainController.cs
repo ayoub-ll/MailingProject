@@ -15,7 +15,7 @@ namespace MailingProject.Controller
 {
     class MainController
     {
-        public static MainController instance;
+        private static MainController instance;
 
         /* DAO */
         public ICampaignDao campaignDao;
@@ -66,37 +66,16 @@ namespace MailingProject.Controller
             this.campaignDao.addCampaign(newCampaign);
         }
 
+        /* Retourne une collection de EmailsFile depuis le campaignId passé en param */
         public ICollection<EmailsFile> getCampaignEmailsFilesById(int campaignId)
         {
             return this.campaignDao.getCampaignEmailsFilesById(campaignId);
         }
 
+        /* Ajoute un nouveau EmailsFile à la campagne dont le campaignId est passé en param */
         public void AddEmailsFileByCampaignId(int campaignSelectedId, EmailsFile newEmailsFile)
         {
             this.campaignDao.addCampaignEmailsFile(campaignSelectedId, newEmailsFile);
         }
-
-        /* MAJ de la DB de campagnes depuis les models */
-        /*
-        public void UpdateDbFromCampaignList(ListView.ListViewItemCollection items)
-        {
-            List<Campaign> dbCampaigns = new List<Campaign>();
-            foreach(System.Windows.Forms.ListViewItem item in items)
-            {
-                Campaign campaign = new Campaign(item.Text);
-
-                //On détecte si c'est une campagne existant en checkant s'il a un ID en subItem
-                if (item.SubItems.Count > 1)
-                {
-                    //Récupération de l'id du nouvel item crée (puisqu'il n'a pas d'id ici)
-                    //qu'on a préalablement installé en subItem
-                    campaign.campaignId = Convert.ToInt32(item.SubItems[1].Text);
-                }
-
-                dbCampaigns.Add(campaign);
-            }
-            this.dbService.updateCampaignsDb(dbCampaigns);
-        }
-        */
     }
 }
