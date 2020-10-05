@@ -84,6 +84,7 @@ namespace MailingProject.Controller
             this.campaignDao.AddCampaignEmail(campaignSelectedId, newEmail);
         }
 
+        /* Retourne la liste d'emails liés à la campagne dont le campaignId est passé en param */
         public ICollection<Email> getCampaignEmailsById(int campaignId)
         {
             return this.campaignDao.GetCampaignEmailsById(campaignId);

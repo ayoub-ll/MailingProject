@@ -242,6 +242,7 @@ namespace MailingProject.View
             }
         }
 
+        /* Au double-click d'un email dans la liste, on lance le beginEdit() sur l'élèment pour le modifier sur la view */
         private void listView3_DoubleClick(object sender, System.EventArgs e)
         {
             if (this.listView3.SelectedItems.Count == 1)
