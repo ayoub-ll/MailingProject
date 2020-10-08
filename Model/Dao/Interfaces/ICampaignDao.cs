@@ -22,7 +22,7 @@ namespace MailingProject.Dao.Interfaces
         bool AddCampaignEmail(int campaignSelectedId, Email newEmail);
         ICollection<Email> GetCampaignEmailsById(int campaignId);
         bool RemoveEmailById(int emailId);
-        Email getEmailById(int emailId);
-        bool updateEmail(Email email);
+        Email GetEmailById(int emailId);
+        bool UpdateEmail(Email email);
     }
 }

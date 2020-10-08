@@ -36,7 +36,7 @@ namespace MailingProject.View
         private void button1_Click(object sender, EventArgs e)
         {
             Campaign newCampaign = new Campaign(textBox1.Text); //Création de l'objet Campagne
-            MainController.getInstance().addCampaign(newCampaign); //Ajout de la campagne à la db
+            MainController.getInstance().AddCampaign(newCampaign); //Ajout de la campagne à la db
             MainController.getInstance().UpdateCampaignListFromDb(); //Mise à jour de la liste sur la view depuis la db suite à l'ajout de la nouvelle campagne
 
             System.Windows.Forms.MessageBox.Show("Nouvelle campagne ajoutée !");
@@ -107,6 +107,7 @@ namespace MailingProject.View
             if (listView1.SelectedItems.Count > 0)//Si un élement est bien selectionné (et que c'est pas un click à blanc)
             {
                 groupBox2.Visible = true; //Affichage de la partie emails liés à la campagne selectionnée
+                button7.Visible = true; //Affichage du boutton passant à l'IHM d'envoi d'email lorsque une campagne est selectionnée
 
                 /* clear de la partie listing mails */
                 this.listView2.Clear();
@@ -116,7 +117,8 @@ namespace MailingProject.View
                 this.UpdateEmailsListFromDb(); //Récupération et affichage de la liste d'emails liés à la campagne selectionnée
             } else
             {
-                groupBox2.Visible = false;
+                groupBox2.Visible = false; //Si pas de campagne selectionnée, on cache le groupbox contenant le listing des mails
+                button7.Visible = false; //Si pas de campagne selectionnée, on cache le bouton passant à l'IHM d'envoi d'email
             }
         }
 
@@ -126,7 +128,7 @@ namespace MailingProject.View
         private void ShowCampaignInformationsFromDb()
         {
             //Récupération des paths des fichiers d'emails liés à la campagne selectionnée sur cette view
-            ICollection<EmailsFile> emailsFiles = MainController.getInstance().getCampaignEmailsFilesById(Convert.ToInt32(listView1.SelectedItems[0].SubItems[1].Text));
+            ICollection<EmailsFile> emailsFiles = MainController.getInstance().GetCampaignEmailsFilesById(Convert.ToInt32(listView1.SelectedItems[0].SubItems[1].Text));
 
             /*
              * On parcours les fichiers d'emails récupérés en DB
@@ -176,7 +178,7 @@ namespace MailingProject.View
                     EmailsFile newEmailsFile = new EmailsFile(dialog.SafeFileName);
 
                     MainController.getInstance().AddEmailsFileByCampaignId(campaignSelectedId, newEmailsFile); //Ajout du nouveau EmailsFile associé à la campagne selectionnée
-                    this.UpdateEmailsFileListFromDb(MainController.getInstance().getCampaignEmailsFilesById(campaignSelectedId)); //Mise à jour de la liste de fichiers d'emails
+                    this.UpdateEmailsFileListFromDb(MainController.getInstance().GetCampaignEmailsFilesById(campaignSelectedId)); //Mise à jour de la liste de fichiers d'emails
 
                     //File.Copy((@path), "Storage/EmailsFiles/"+dialog.SafeFileName); //Création d'une copie du fichier selectionné, à l'intérieur du projet
                 }
@@ -201,7 +203,7 @@ namespace MailingProject.View
             int campaignSelectedId = Convert.ToInt32(listView1.SelectedItems[0].SubItems[1].Text); //campaignId de la campagne selectionnée
 
             //Ajout de l'email en db (via controller and dao)
-            MainController.getInstance().addEmailByCampaignId(campaignSelectedId, new Email(this.textBox2.Text));
+            MainController.getInstance().AddEmailByCampaignId(campaignSelectedId, new Email(this.textBox2.Text));
             this.UpdateEmailsListFromDb(); //Mise à jour de la liste de fichiers d'emails
 
             this.textBox2.Clear(); //Nettoyage de la textbox contenant le mail saisi
@@ -216,7 +218,7 @@ namespace MailingProject.View
 
             int campaignSelectedId = Convert.ToInt32(listView1.SelectedItems[0].SubItems[1].Text); //campaignId de la campagne selectionnée
 
-            foreach (Email email in MainController.getInstance().getCampaignEmailsById(campaignSelectedId))
+            foreach (Email email in MainController.getInstance().GetCampaignEmailsById(campaignSelectedId))
             {
                 ListViewItem campaignViewTime = new ListViewItem();
                 ListViewItem.ListViewSubItem campaignIdSubItem = new ListViewItem.ListViewSubItem();
@@ -264,10 +266,10 @@ namespace MailingProject.View
                 return;
             }
 
-            Email email = MainController.getInstance().getEmailById(Convert.ToInt32(this.listView3.Items[e.Item].SubItems[1].Text));
+            Email email = MainController.getInstance().GetEmailById(Convert.ToInt32(this.listView3.Items[e.Item].SubItems[1].Text));
             email.email = e.Label;
 
-            MainController.getInstance().updateEmail(email);
+            MainController.getInstance().UpdateEmail(email);
 
             MessageBox.Show("Modification réalisée: " + e.Label.ToString());
         }
@@ -278,7 +280,7 @@ namespace MailingProject.View
         {
             if (this.listView3.SelectedItems.Count == 1)
             {
-                MainController.getInstance().removeEmailById(Convert.ToInt32(listView3.SelectedItems[0].SubItems[1].Text));
+                MainController.getInstance().RemoveEmailById(Convert.ToInt32(listView3.SelectedItems[0].SubItems[1].Text));
                 this.UpdateEmailsListFromDb();
             }
         }
@@ -297,7 +299,7 @@ namespace MailingProject.View
                 if (listView3.Items[i].Text.Equals(listView3.Items[i + 1].Text))
                 {
                     int emailId = Convert.ToInt32(listView3.Items[i + 1].SubItems[1].Text); //Stockage de l'id du mail à retirer
-                    MainController.getInstance().removeEmailById(emailId); //retrait du mail en DB
+                    MainController.getInstance().RemoveEmailById(emailId); //retrait du mail en DB
                     this.UpdateEmailsListFromDb(); //mise à jour de la liste des emails en view suite à la suppression
 
                     i--;
@@ -322,6 +324,15 @@ namespace MailingProject.View
                 }
                 streamWriter.Close();
             }
+        }
+
+        /**
+         * Au click du boutton "Envoyer e-mail", on switch d'IHM pour passer à l'IHM d'envoi de mail
+         */
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Campaign campaign = MainController.getInstance().GetCampaignById(Convert.ToInt32(listView1.SelectedItems[0].SubItems[1].Text)); 
+            MainController.getInstance().StartEmailSendingView(campaign); //Switch de la CampaignManagementView à StartEmailSendingView en passant la campagne selectionnée
         }
     }
 }

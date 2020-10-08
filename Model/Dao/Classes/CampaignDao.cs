@@ -82,13 +82,13 @@ namespace MailingProject.Dao.Classes
         }
 
         /* Retourne la l'email lié à l'id est passé en param */
-        public Email getEmailById(int emailId)
+        public Email GetEmailById(int emailId)
         {
             return this.dbContext.Emails.Where(e => e.emailId.Equals(emailId)).FirstOrDefault();
         }
 
         /* Met à jour l'email en DB passé en param */
-        public bool updateEmail(Email email)
+        public bool UpdateEmail(Email email)
         {
             this.dbContext.Emails.AddOrUpdate(email);
 

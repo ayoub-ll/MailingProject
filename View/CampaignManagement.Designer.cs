@@ -319,6 +319,8 @@ namespace MailingProject.View
             this.button7.TabIndex = 9;
             this.button7.Text = "Envoyer e-mail";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Visible = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // CampaignManagement
             // 

@@ -157,6 +157,8 @@
     <Compile Include="Model\Campaign.cs" />
     <Compile Include="Model\Email.cs" />
     <Compile Include="Model\EmailsFile.cs" />
+    <Compile Include="Services\IEmailService.cs" />
+    <Compile Include="Services\EmailService.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="View\CampaignManagement.cs">
       <SubType>Form</SubType>
