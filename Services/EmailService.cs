@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,10 +17,17 @@ namespace MailingProject.Services
             MailMessage message = new MailMessage(from, to);
             message.Subject = "Using the new SMTP client.";
             message.Body = @"Using this new feature, you can send an email message from an application very easily.";
-            SmtpClient client = new SmtpClient(server);
+
+            SmtpClient client = new SmtpClient();
+            client.Port = 587;
+            client.EnableSsl = true;
+            client.Credentials = new NetworkCredential("mailingproject@gmx.fr", "MailingProject10");
+            client.Host = "mail.gmx.com";
+
+            //SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //SmtpClient(server);
             // Credentials are necessary if the server requires the client
             // to authenticate before it will send email on the client's behalf.
-            client.UseDefaultCredentials = true;
+            //client.UseDefaultCredentials = true;
 
             try
             {

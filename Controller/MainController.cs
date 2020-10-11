@@ -65,6 +65,14 @@ namespace MailingProject.Controller
             this.campaignManagementView.UpdateCampaignListFromDb(dbCampaigns);
         }
 
+        public bool SendEmail(string testEmail, string sender, string subject, string body)
+        {
+            IList<string> emailsList = new List<string>();
+            emailsList.Add(testEmail);
+
+            return this.emailService.SendEmail(null, sender, subject, body, emailsList, null);
+        }
+
         /* Ajout d'une nouvelle campagne à la DB via le dbService */
         public void AddCampaign(Campaign newCampaign)
         {
@@ -95,6 +103,7 @@ namespace MailingProject.Controller
             return this.campaignDao.GetCampaignEmailsById(campaignId);
         }
 
+        /* Suppression d'un Email depuis son ID */
         public void RemoveEmailById(int emailId)
         {
             this.campaignDao.RemoveEmailById(emailId);

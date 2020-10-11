@@ -1,4 +1,5 @@
-﻿using MailingProject.Model;
+﻿using MailingProject.Controller;
+using MailingProject.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -65,6 +66,29 @@ namespace MailingProject.View
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /**
+         * Au click du bouton "envoyer à un e-mail de test"
+         */
+        private void button3_Click(object sender, EventArgs e)
+        {
+            /* Si l'email est bien valide, on envoi le mail de test */
+            var addr = new System.Net.Mail.MailAddress(textBox5.Text);
+            if (addr.Address == textBox5.Text)
+            {
+                MainController.getInstance().SendEmail(textBox5.Text, textBox1.Text, textBox3.Text, textBox3.Text);
+            }
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
