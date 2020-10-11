@@ -10,29 +10,24 @@ namespace MailingProject.Services
 {
     class EmailService : IEmailService
     {
-        public bool SendEmail(string server, string sender, string subject, string body, IList<string> recipients, IList<string> attachements)
+        public bool SendEmail(string host, int port, string smtpUsername, string smtpPassword, string sender, string subject, string body, IList<string> recipients, IList<string> attachements)
         {
             string to = recipients.First();
             string from = sender;
             MailMessage message = new MailMessage(from, to);
-            message.Subject = "Using the new SMTP client.";
-            message.Body = @"Using this new feature, you can send an email message from an application very easily.";
+            message.Subject = subject;
+            message.Body = body;
 
             SmtpClient client = new SmtpClient();
-            client.Port = 587;
-            client.EnableSsl = true;
-            client.Credentials = new NetworkCredential("mailingproject@gmx.fr", "MailingProject10");
             client.Host = "mail.gmx.com";
-
-            //SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //SmtpClient(server);
-            // Credentials are necessary if the server requires the client
-            // to authenticate before it will send email on the client's behalf.
-            //client.UseDefaultCredentials = true;
+            client.Port = port;
+            client.EnableSsl = true;
+            client.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
 
             try
             {
                 client.Send(message);
-                return false;
+                return true;
             }
             catch (Exception ex)
             {

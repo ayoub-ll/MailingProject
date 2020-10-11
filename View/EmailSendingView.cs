@@ -79,7 +79,10 @@ namespace MailingProject.View
             var addr = new System.Net.Mail.MailAddress(textBox5.Text);
             if (addr.Address == textBox5.Text)
             {
-                MainController.getInstance().SendEmail(textBox5.Text, textBox1.Text, textBox3.Text, textBox3.Text);
+                if(MainController.getInstance().SendEmail(true, textBox4.Text, Convert.ToInt32(textBox6.Text), textBox7.Text, textBox8.Text, textBox5.Text, textBox1.Text, textBox3.Text, textBox3.Text))
+                    System.Windows.Forms.MessageBox.Show("Mail envoyé !");
+                else
+                    System.Windows.Forms.MessageBox.Show("Problème lors de l'envoi du mail. Veuillez vérifier vos paramètres SMTP");
             }
         }
 
@@ -89,6 +92,11 @@ namespace MailingProject.View
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
         {
 
         }

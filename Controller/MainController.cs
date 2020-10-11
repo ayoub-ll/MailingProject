@@ -65,12 +65,21 @@ namespace MailingProject.Controller
             this.campaignManagementView.UpdateCampaignListFromDb(dbCampaigns);
         }
 
-        public bool SendEmail(string testEmail, string sender, string subject, string body)
+        /**
+         * Fonction intérmerdiaire du controller permettant l'envoi du mail depuis les informations de la vue
+         * et en faisant appel au MailService (contenant le SmtpClient)
+         */
+        public bool SendEmail(bool emailTestBool, string host, int port, string smtpUsername, string smtpPassword, string testEmail, string sender, string subject, string body)
         {
             IList<string> emailsList = new List<string>();
-            emailsList.Add(testEmail);
 
-            return this.emailService.SendEmail(null, sender, subject, body, emailsList, null);
+            // S'il s'agit de l'envoi du mail uniquement pour l'adresse de test
+            if (emailTestBool)
+            {
+                emailsList.Add(testEmail);
+            }
+
+            return this.emailService.SendEmail(host, port, smtpUsername, smtpPassword, sender, subject, body, emailsList, null);
         }
 
         /* Ajout d'une nouvelle campagne à la DB via le dbService */
