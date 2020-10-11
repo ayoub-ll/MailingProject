@@ -55,6 +55,8 @@ namespace MailingProject.Controller
         {
             this.campaignManagementView.Show();
             this.homeView.Hide();
+            if(this.emailSendingView != null)
+                this.emailSendingView.Hide();
         }
 
         /* MAJ de la liste de campagnes depuis la DB MySQL */

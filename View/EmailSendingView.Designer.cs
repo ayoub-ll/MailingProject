@@ -42,28 +42,30 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.textBox3);
@@ -211,6 +213,92 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Paramètrage d\'envoi";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.textBox8);
+            this.groupBox5.Controls.Add(this.label9);
+            this.groupBox5.Controls.Add(this.textBox7);
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.textBox6);
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.textBox4);
+            this.groupBox5.Controls.Add(this.label6);
+            this.groupBox5.Location = new System.Drawing.Point(53, 28);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(230, 206);
+            this.groupBox5.TabIndex = 19;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "SMTP";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(6, 175);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(127, 20);
+            this.textBox8.TabIndex = 22;
+            this.textBox8.Text = "MailingProject10";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 159);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 13);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Password";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(6, 128);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(218, 20);
+            this.textBox7.TabIndex = 20;
+            this.textBox7.Text = "mailingproject@gmx.fr";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 112);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 13);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Username";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(6, 83);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(52, 20);
+            this.textBox6.TabIndex = 18;
+            this.textBox6.Text = "587";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 67);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(26, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Port";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(6, 42);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(218, 20);
+            this.textBox4.TabIndex = 16;
+            this.textBox4.Text = "mail.gmx.com";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 26);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(30, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Hôte";
+            // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.Green;
@@ -253,91 +341,16 @@
             this.textBox5.Text = "ayoub.laarobi@gmail.com";
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
-            // textBox4
+            // button4
             // 
-            this.textBox4.Location = new System.Drawing.Point(6, 42);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(218, 20);
-            this.textBox4.TabIndex = 16;
-            this.textBox4.Text = "mail.gmx.com";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 26);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 13);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Hôte";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.textBox8);
-            this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Controls.Add(this.textBox7);
-            this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Controls.Add(this.textBox6);
-            this.groupBox5.Controls.Add(this.label7);
-            this.groupBox5.Controls.Add(this.textBox4);
-            this.groupBox5.Controls.Add(this.label6);
-            this.groupBox5.Location = new System.Drawing.Point(53, 28);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(230, 206);
-            this.groupBox5.TabIndex = 19;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "SMTP";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(6, 83);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(52, 20);
-            this.textBox6.TabIndex = 18;
-            this.textBox6.Text = "587";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 67);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(26, 13);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Port";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(6, 128);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(218, 20);
-            this.textBox7.TabIndex = 20;
-            this.textBox7.Text = "mailingproject@gmx.fr";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 112);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 13);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Username";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(6, 175);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(127, 20);
-            this.textBox8.TabIndex = 22;
-            this.textBox8.Text = "MailingProject10";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 159);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 13);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Password";
+            this.button4.BackColor = System.Drawing.Color.DarkGray;
+            this.button4.Location = new System.Drawing.Point(42, 365);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(219, 40);
+            this.button4.TabIndex = 20;
+            this.button4.Text = "Revenir à la gestion campagnes";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // EmailSendingView
             // 
@@ -352,10 +365,10 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -389,5 +402,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button4;
     }
 }

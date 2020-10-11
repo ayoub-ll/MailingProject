@@ -55,6 +55,7 @@ namespace MailingProject.View
             this.listView2 = new System.Windows.Forms.ListView();
             this.button7 = new System.Windows.Forms.Button();
             this.customInstaller1 = new MySql.Data.MySqlClient.CustomInstaller();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -317,10 +318,18 @@ namespace MailingProject.View
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(219, 40);
             this.button7.TabIndex = 9;
-            this.button7.Text = "Envoyer e-mail";
+            this.button7.Text = "Paramètrage e-mail";
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Visible = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip2.TabIndex = 10;
+            this.menuStrip2.Text = "menuStrip2";
             // 
             // CampaignManagement
             // 
@@ -332,7 +341,9 @@ namespace MailingProject.View
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listView1);
+            this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip2;
             this.Name = "CampaignManagement";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.CampaignManagement_Load);
@@ -380,5 +391,6 @@ namespace MailingProject.View
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button7;
         private MySql.Data.MySqlClient.CustomInstaller customInstaller1;
+        private System.Windows.Forms.MenuStrip menuStrip2;
     }
 }
