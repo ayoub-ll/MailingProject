@@ -10,13 +10,18 @@ namespace MailingProject.Services
 {
     class EmailService : IEmailService
     {
-        public bool SendEmail(string host, int port, string smtpUsername, string smtpPassword, string sender, string subject, string body, IList<string> recipients, IList<string> attachements)
+        public bool SendEmail(string host, int port, string smtpUsername, string smtpPassword, string sender, string subject, string body, ICollection<string> recipients, IList<string> attachements)
         {
-            string to = recipients.First();
             string from = sender;
-            MailMessage message = new MailMessage(from, to);
-            message.Subject = subject;
-            message.Body = body;
+            List<MailMessage> messagesList = new List<MailMessage>();
+            foreach (string recipient in recipients)
+            {
+                MailMessage mailMessage = new MailMessage(sender, recipient);           
+                mailMessage.Subject = subject;
+                mailMessage.Body = body;
+                messagesList.Add(mailMessage);
+            }
+                
 
             SmtpClient client = new SmtpClient();
             client.Host = "mail.gmx.com";
@@ -25,8 +30,9 @@ namespace MailingProject.Services
             client.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
 
             try
-            {
-                client.Send(message);
+            {   //Pour chaque email dans la campagne selectionné, envoi du mail
+                foreach(MailMessage mailMessage in messagesList)
+                    client.Send(mailMessage);
                 return true;
             }
             catch (Exception ex)

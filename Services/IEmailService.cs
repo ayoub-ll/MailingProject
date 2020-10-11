@@ -8,6 +8,6 @@ namespace MailingProject.Services
 {
     interface IEmailService
     {
-        bool SendEmail(string host, int port, string smtpUsername, string smtpPassword, string sender, string subject, string body, IList<string> recipients, IList<string> attachements);
+        bool SendEmail(string host, int port, string smtpUsername, string smtpPassword, string sender, string subject, string body, ICollection<string> recipients, IList<string> attachements);
     }
 }

@@ -220,7 +220,7 @@
             this.button7.TabIndex = 18;
             this.button7.Text = "Envoyer e-mail";
             this.button7.UseVisualStyleBackColor = false;
-            this.button7.Visible = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // groupBox4
             // 
