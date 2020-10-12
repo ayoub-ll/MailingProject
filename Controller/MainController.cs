@@ -79,6 +79,13 @@ namespace MailingProject.Controller
             foreach (Email email in recipients)
                 recipientsList.Add(email.email);
 
+            if(recipientsFromFiles != null && recipientsFromFiles.Count > 0)
+            {
+                //Appel au MailService afin de récupérer les mails depuis les fichiers liés à la Campaign courrante
+                foreach (string email in emailService.GetEmailsFromFiles(recipientsFromFiles))
+                    recipientsList.Add(email);
+            }
+
             return this.emailService.SendEmail(host, port, smtpUsername, smtpPassword, sender, subject, body, recipientsList, null);
         }
 

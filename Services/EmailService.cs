@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MailingProject.Model;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -41,6 +43,30 @@ namespace MailingProject.Services
                     ex.ToString());
                 return false;
             }
+        }
+
+        /**
+         * Retourne une liste de mails depuis les fichiers d'emails (EmailsFile) passés en paramètre
+         */
+        public IList<string> GetEmailsFromFiles(ICollection<EmailsFile> recipientsFromFiles)
+        {
+            IList<string> recipients = new List<string>();
+
+            // Path courrant du projet
+            string workingDirectory = Environment.CurrentDirectory;
+
+            foreach (EmailsFile emailsFile in recipientsFromFiles)
+            {
+                foreach (string line in File.ReadLines((@Directory.GetParent(workingDirectory).Parent.FullName + @"\Storage\EmailsFiles\" + @emailsFile.path)))
+                {
+                    /* Si l'email est bien valide, on l'ajoute à notre liste de déstinataires */
+                    var addr = new System.Net.Mail.MailAddress(line);
+                    if (addr.Address == line)
+                        recipients.Add(line);
+                }
+            }
+
+            return recipients;
         }
     }
 }
