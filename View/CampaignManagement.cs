@@ -173,14 +173,20 @@ namespace MailingProject.View
             if (dialog.ShowDialog() == DialogResult.OK) // if user clicked OK
             {
                 String path = dialog.FileName; // get name of file
+
                 using (StreamReader reader = new StreamReader(new FileStream(path, FileMode.Open), new UTF8Encoding()))
                 {
                     EmailsFile newEmailsFile = new EmailsFile(dialog.SafeFileName);
 
-                    MainController.getInstance().AddEmailsFileByCampaignId(campaignSelectedId, newEmailsFile); //Ajout du nouveau EmailsFile associé à la campagne selectionnée
-                    this.UpdateEmailsFileListFromDb(MainController.getInstance().GetCampaignEmailsFilesById(campaignSelectedId)); //Mise à jour de la liste de fichiers d'emails
-
-                    //File.Copy((@path), "Storage/EmailsFiles/"+dialog.SafeFileName); //Création d'une copie du fichier selectionné, à l'intérieur du projet
+                    //Ajout du nouveau EmailsFile associé à la campagne selectionnée en passant par le controller
+                    MainController.getInstance().AddEmailsFileByCampaignId(campaignSelectedId, newEmailsFile);
+                    //Mise à jour de la liste de fichiers d'emails
+                    this.UpdateEmailsFileListFromDb(MainController.getInstance().GetCampaignEmailsFilesById(campaignSelectedId));
+                    // Path courrant du projet
+                    string workingDirectory = Environment.CurrentDirectory;
+                    //Copie du fichier dans le repertoire du projet
+                    File.Copy(path, (@Directory.GetParent(workingDirectory).Parent.FullName + @"\Storage\EmailsFiles\"+@dialog.SafeFileName), true); //Création d'une copie du fichier selectionné, à l'intérieur du projet
+                    System.Windows.Forms.MessageBox.Show("Fichier sauvegardé !");
                 }
             }
         }

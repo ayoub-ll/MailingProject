@@ -82,7 +82,7 @@ namespace MailingProject.View
                 IList<Email> recipients = new List<Email>();
                 recipients.Add(new Email(textBox5.Text));
 
-                if (MainController.getInstance().SendEmail(true, textBox4.Text, Convert.ToInt32(textBox6.Text), textBox7.Text, textBox8.Text, textBox5.Text, textBox1.Text, textBox3.Text, textBox3.Text, recipients))
+                if (MainController.getInstance().SendEmail(true, textBox4.Text, Convert.ToInt32(textBox6.Text), textBox7.Text, textBox8.Text, textBox5.Text, textBox1.Text, textBox3.Text, textBox3.Text, recipients, null))
                     System.Windows.Forms.MessageBox.Show("Mail envoyé !");
                 else
                     System.Windows.Forms.MessageBox.Show("Problème lors de l'envoi du mail. Veuillez vérifier vos paramètres SMTP");
@@ -90,12 +90,12 @@ namespace MailingProject.View
         }
 
         /**
-         * Au click du bouton "envoyer e-mail", on envoi le mail à toute la liste configuré dans l'IHM
-         * de la Campaign
+         * Au click du bouton "envoyer e-mail", on envoi le mail à toute la liste configuré dans l'IHM + les mails dans les 
+         * différents fichiers associés à la Campaign courrante
          */
         private void button7_Click(object sender, EventArgs e)
         {
-            MainController.getInstance().SendEmail(false, textBox4.Text, Convert.ToInt32(textBox6.Text), textBox7.Text, textBox8.Text, textBox5.Text, textBox1.Text, textBox3.Text, textBox3.Text, selectedCampaign.emailList);
+            MainController.getInstance().SendEmail(false, textBox4.Text, Convert.ToInt32(textBox6.Text), textBox7.Text, textBox8.Text, textBox5.Text, textBox1.Text, textBox3.Text, textBox3.Text, selectedCampaign.emailList, selectedCampaign.emailsFileList);
             System.Windows.Forms.MessageBox.Show("Mail envoyé !");
         }
 

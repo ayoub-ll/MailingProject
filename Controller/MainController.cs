@@ -71,11 +71,11 @@ namespace MailingProject.Controller
          * Fonction intérmerdiaire du controller permettant l'envoi du mail depuis les informations de la vue
          * et en faisant appel au MailService (contenant le SmtpClient)
          */
-        public bool SendEmail(bool emailTestBool, string host, int port, string smtpUsername, string smtpPassword, string testEmail, string sender, string subject, string body, ICollection<Email> recipients)
+        public bool SendEmail(bool emailTestBool, string host, int port, string smtpUsername, string smtpPassword, string testEmail, string sender, string subject, string body, ICollection<Email> recipients, ICollection<EmailsFile> recipientsFromFiles)
         {
             IList<string> recipientsList = new List<string>();
 
-            // Récupération des emails en string de chaque objet de type Email
+            // Récupération des emails en string de chaque objet de type Email dans la collection recipients
             foreach (Email email in recipients)
                 recipientsList.Add(email.email);
 
@@ -118,11 +118,13 @@ namespace MailingProject.Controller
             this.campaignDao.RemoveEmailById(emailId);
         }
 
+        /* Retourne un objet Email depuis l'id passé en paramètre */
         public Email GetEmailById(int emailId)
         {
             return this.campaignDao.GetEmailById(emailId);
         }
 
+        /* Update en DB l'email passé en paramètre */
         public void UpdateEmail(Email email)
         {
             this.campaignDao.UpdateEmail(email);
