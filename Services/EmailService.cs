@@ -21,12 +21,18 @@ namespace MailingProject.Services
                 MailMessage mailMessage = new MailMessage(sender, recipient);           
                 mailMessage.Subject = subject;
                 mailMessage.Body = body;
+
+                //Ajout des pièces jointes
+                if(attachements != null)
+                    foreach (string attachment in attachements)
+                        mailMessage.Attachments.Add(new Attachment(attachment));
+
                 messagesList.Add(mailMessage);
             }
                 
 
             SmtpClient client = new SmtpClient();
-            client.Host = "mail.gmx.com";
+            client.Host = host;
             client.Port = port;
             client.EnableSsl = true;
             client.Credentials = new NetworkCredential(smtpUsername, smtpPassword);

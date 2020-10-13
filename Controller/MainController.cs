@@ -57,6 +57,7 @@ namespace MailingProject.Controller
             this.homeView.Hide();
             if(this.emailSendingView != null)
                 this.emailSendingView.Hide();
+
         }
 
         /* MAJ de la liste de campagnes depuis la DB MySQL */
@@ -71,7 +72,7 @@ namespace MailingProject.Controller
          * Fonction intérmerdiaire du controller permettant l'envoi du mail depuis les informations de la vue
          * et en faisant appel au MailService (contenant le SmtpClient)
          */
-        public bool SendEmail(bool emailTestBool, string host, int port, string smtpUsername, string smtpPassword, string testEmail, string sender, string subject, string body, ICollection<Email> recipients, ICollection<EmailsFile> recipientsFromFiles)
+        public bool SendEmail(bool emailTestBool, string host, int port, string smtpUsername, string smtpPassword, string testEmail, string sender, string subject, string body, ICollection<Email> recipients, ICollection<EmailsFile> recipientsFromFiles, IList<string> attachments)
         {
             IList<string> recipientsList = new List<string>();
 
@@ -86,7 +87,7 @@ namespace MailingProject.Controller
                     recipientsList.Add(email);
             }
 
-            return this.emailService.SendEmail(host, port, smtpUsername, smtpPassword, sender, subject, body, recipientsList, null);
+            return this.emailService.SendEmail(host, port, smtpUsername, smtpPassword, sender, subject, body, recipientsList, attachments);
         }
 
         /* Ajout d'une nouvelle campagne à la DB via le dbService */
@@ -142,11 +143,14 @@ namespace MailingProject.Controller
          */
         public void StartEmailSendingView(Campaign campaign)
         {
-            instance.emailSendingView = new EmailSendingView();
+            if(this.emailSendingView == null)
+                this.emailSendingView = new EmailSendingView();
 
             this.emailSendingView.Show();
             this.emailSendingView.selectedCampaign = campaign;
             this.emailSendingView.SetCampaignNameLabel(campaign.name);
+
+            this.emailSendingView.ClearAttachmentsList();//Clear de la liste des pièces jointes 
 
             this.campaignManagementView.Hide();
         }
