@@ -107,7 +107,7 @@ namespace MailingProject.View
                 IList<Email> recipients = new List<Email>();
                 recipients.Add(new Email(textBox5.Text));
 
-                if (MainController.getInstance().SendEmail(true, textBox4.Text, Convert.ToInt32(textBox6.Text), textBox7.Text, textBox8.Text, textBox5.Text, textBox1.Text, textBox3.Text, textBox3.Text, recipients, null, attachments))
+                if (MainController.getInstance().SendEmail(true, textBox4.Text, Convert.ToInt32(textBox6.Text), textBox7.Text, textBox8.Text, textBox5.Text, textBox1.Text, textBox2.Text, mstHtmlEditor1.BodyHTML, recipients, null, attachments))
                     System.Windows.Forms.MessageBox.Show("Mail envoyé !");
                 else
                     System.Windows.Forms.MessageBox.Show("Problème lors de l'envoi du mail. Veuillez vérifier vos paramètres SMTP");
@@ -121,7 +121,7 @@ namespace MailingProject.View
         private void button7_Click(object sender, EventArgs e)
         {
             MainController.getInstance().SendEmail(false, textBox4.Text, Convert.ToInt32(textBox6.Text), textBox7.Text,
-                textBox8.Text, textBox5.Text, textBox1.Text, textBox3.Text, textBox3.Text, selectedCampaign.emailList, selectedCampaign.emailsFileList, this.attachments);
+                textBox8.Text, textBox5.Text, textBox1.Text, textBox2.Text, mstHtmlEditor1.BodyHTML, selectedCampaign.emailList, selectedCampaign.emailsFileList, this.attachments);
             
             System.Windows.Forms.MessageBox.Show("Mail envoyé !");
         }
@@ -144,6 +144,11 @@ namespace MailingProject.View
         private void button4_Click(object sender, EventArgs e)
         {
             MainController.getInstance().StartBackOffice();
+        }
+
+        private void mstHtmlEditor1_HtmlChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

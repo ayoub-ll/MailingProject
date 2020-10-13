@@ -30,6 +30,7 @@ namespace MailingProject.View
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CampaignManagement));
             this.listView1 = new System.Windows.Forms.ListView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -343,9 +344,10 @@ namespace MailingProject.View
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "CampaignManagement";
-            this.Text = "Form1";
+            this.Text = "Mailing Project - MANAGEMENT CAMPAGNES";
             this.Load += new System.EventHandler(this.CampaignManagement_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

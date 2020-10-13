@@ -21,6 +21,7 @@ namespace MailingProject.Services
                 MailMessage mailMessage = new MailMessage(sender, recipient);           
                 mailMessage.Subject = subject;
                 mailMessage.Body = body;
+                mailMessage.IsBodyHtml = true;
 
                 //Ajout des pièces jointes
                 if(attachements != null)
@@ -29,7 +30,6 @@ namespace MailingProject.Services
 
                 messagesList.Add(mailMessage);
             }
-                
 
             SmtpClient client = new SmtpClient();
             client.Host = host;

@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            BaiqiSoft.HtmlEditorControl.FormatHtmlOptions formatHtmlOptions1 = new BaiqiSoft.HtmlEditorControl.FormatHtmlOptions();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmailSendingView));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.mstHtmlEditor1 = new BaiqiSoft.HtmlEditorControl.MstHtmlEditor();
+            this.button4 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,7 +58,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -65,10 +67,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.mstHtmlEditor1);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.label3);
@@ -77,11 +79,42 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(566, 426);
+            this.groupBox1.Size = new System.Drawing.Size(566, 511);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Envoi de l\'e-mail";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // mstHtmlEditor1
+            // 
+            formatHtmlOptions1.BreakBeforeBR = true;
+            formatHtmlOptions1.ClosingSingleTags = true;
+            formatHtmlOptions1.IndentHtmlTags = true;
+            formatHtmlOptions1.IndentScript = true;
+            formatHtmlOptions1.IndentSpaces = 4;
+            formatHtmlOptions1.IndentWithTabs = false;
+            formatHtmlOptions1.LowercaseTags = true;
+            formatHtmlOptions1.QuoteAttributeValues = true;
+            this.mstHtmlEditor1.FormatHtmlOptions = formatHtmlOptions1;
+            this.mstHtmlEditor1.LanguageConfig = null;
+            this.mstHtmlEditor1.Location = new System.Drawing.Point(22, 184);
+            this.mstHtmlEditor1.Name = "mstHtmlEditor1";
+            this.mstHtmlEditor1.SelectionLength = 0;
+            this.mstHtmlEditor1.SelectionStart = 0;
+            this.mstHtmlEditor1.Size = new System.Drawing.Size(324, 263);
+            this.mstHtmlEditor1.TabIndex = 21;
+            this.mstHtmlEditor1.HtmlChanged += new System.EventHandler(this.mstHtmlEditor1_HtmlChanged);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.DarkGray;
+            this.button4.Location = new System.Drawing.Point(20, 465);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(219, 40);
+            this.button4.TabIndex = 20;
+            this.button4.Text = "Revenir à la gestion campagnes";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label5
             // 
@@ -135,19 +168,10 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(42, 210);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(243, 20);
-            this.textBox3.TabIndex = 12;
-            this.textBox3.Text = "body";
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(39, 194);
+            this.label4.Location = new System.Drawing.Point(39, 166);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 11;
@@ -155,7 +179,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(42, 159);
+            this.textBox2.Location = new System.Drawing.Point(42, 131);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(243, 20);
             this.textBox2.TabIndex = 10;
@@ -165,7 +189,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(39, 143);
+            this.label3.Location = new System.Drawing.Point(39, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 9;
@@ -174,7 +198,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(42, 108);
+            this.textBox1.Location = new System.Drawing.Point(42, 80);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(243, 20);
             this.textBox1.TabIndex = 8;
@@ -184,7 +208,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 92);
+            this.label1.Location = new System.Drawing.Point(39, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 7;
@@ -208,7 +232,7 @@
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Location = new System.Drawing.Point(616, 17);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(334, 421);
+            this.groupBox3.Size = new System.Drawing.Size(334, 506);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Paramètrage d\'envoi";
@@ -302,7 +326,7 @@
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.Green;
-            this.button7.Location = new System.Drawing.Point(72, 360);
+            this.button7.Location = new System.Drawing.Point(73, 460);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(219, 40);
             this.button7.TabIndex = 18;
@@ -341,26 +365,16 @@
             this.textBox5.Text = "ayoub.laarobi@gmail.com";
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.DarkGray;
-            this.button4.Location = new System.Drawing.Point(42, 365);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(219, 40);
-            this.button4.TabIndex = 20;
-            this.button4.Text = "Revenir à la gestion campagnes";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // EmailSendingView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1014, 450);
+            this.ClientSize = new System.Drawing.Size(1014, 535);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EmailSendingView";
-            this.Text = "Envoi d\'email";
+            this.Text = "Mailing Project - ENVOI DE L\'EMAIL";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -381,7 +395,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button1;
@@ -403,5 +416,6 @@
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button4;
+        private BaiqiSoft.HtmlEditorControl.MstHtmlEditor mstHtmlEditor1;
     }
 }
